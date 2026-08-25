@@ -1,0 +1,9 @@
+# bin (root binary only — do not ignore cmd/amazingd/)
+/amazingd
+*.exe
+*.test
+*.out
+vendor/
+.env
+.idea/
+.vscode/
