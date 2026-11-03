@@ -1,0 +1,16 @@
+{
+  "note": "Brief section 9: C=10,000, P0=3,000, k=1.1, perp fee 0.05%, no pool fees, no funding, no gas, prices stepped in $1 increments. Net P&L per strategy and path; tolerance 3% (or $1 for values near zero).",
+  "paths": {
+    "up_to_3300": [[3000, 3300]],
+    "up_to_3450": [[3000, 3450]],
+    "down_to_2727": [[3000, 2727]],
+    "down_to_2550": [[3000, 2550]],
+    "chop_3000_3150_x5": [[3000, 3150], [3150, 3000], [3000, 3150], [3150, 3000], [3000, 3150], [3150, 3000], [3000, 3150], [3150, 3000], [3000, 3150], [3150, 3000]]
+  },
+  "expected": {
+    "lp_only":    {"up_to_3300": 244,  "up_to_3450": 244,  "down_to_2727": -688, "down_to_2550": -1293, "chop_3000_3150_x5": 0},
+    "static":     {"up_to_3300": -246, "up_to_3450": -490, "down_to_2727": -247, "down_to_2550": -563,  "chop_3000_3150_x5": -2},
+    "step":       {"up_to_3300": -68,  "up_to_3450": -68,  "down_to_2727": -65,  "down_to_2550": -75,   "chop_3000_3150_x5": -339},
+    "continuous": {"up_to_3300": -6,   "up_to_3450": -6,   "down_to_2727": -6,   "down_to_2550": -6,    "chop_3000_3150_x5": -20}
+  }
+}

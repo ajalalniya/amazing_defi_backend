@@ -1,0 +1,8 @@
+# Historical runs over bars built from on-chain swaps (go run ./cmd/sim bars).
+# Only what differs from configs/default.yaml: fees come from each bar's real
+# volume and active liquidity instead of an assumed APR.
+pool:
+  fee_tier: 0.0005
+  fee_model: volume
+  base_fee_apr: 0
+  active_liquidity: 0

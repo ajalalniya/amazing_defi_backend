@@ -12,6 +12,7 @@ import (
 
 	"amazing/internal/api"
 	"amazing/internal/config"
+	"amazing/internal/history"
 	"amazing/internal/market"
 	"amazing/internal/portfolio"
 	"amazing/internal/simulate"
@@ -24,10 +25,16 @@ func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 
+	hist := history.New(cfg.DataDir, cfg.RPCByChain(), log)
+	if g := history.NewGraph(cfg.GraphAPIKey, cfg.SubgraphByChain(), log); g.Enabled() {
+		hist.Graph = g
+		log.Info("subgraph", "enabled", true)
+	}
+
 	var provider market.Provider
 	switch cfg.Provider {
 	case "chain":
-		provider = market.NewChain(cfg.RPCURL, cfg.SubgraphURL)
+		provider = market.NewChain(hist, log)
 		log.Info("provider", "mode", "chain")
 	default:
 		mock := simulate.NewMock(log)
@@ -37,7 +44,8 @@ func main() {
 	}
 
 	store := portfolio.NewMemory(portfolio.SeedPositions(time.Now()), cfg.Provider != "chain")
-	srvAPI := api.New(log, provider, store, cfg.Provider == "chain")
+	srvAPI := api.New(log, provider, store, cfg.Provider == "chain").WithHistory(hist)
+	log.Info("history", "dir", cfg.DataDir, "chains", configuredChains(cfg))
 	go srvAPI.Hub().Start(ctx)
 
 	httpSrv := &http.Server{
@@ -61,4 +69,12 @@ func main() {
 	defer cancel()
 	_ = httpSrv.Shutdown(shutdownCtx)
 	srvAPI.Hub().Drain()
+}
+
+func configuredChains(cfg config.Config) []string {
+	var out []string
+	for id := range cfg.RPCByChain() {
+		out = append(out, history.ChainName(id))
+	}
+	return out
 }

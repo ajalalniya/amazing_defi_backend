@@ -30,26 +30,26 @@ type hedge struct {
 }
 
 type LPQuote struct {
-	PoolID             string       `json:"poolId"`
-	Price              float64      `json:"price"`
-	Lower              float64      `json:"lower"`
-	Upper              float64      `json:"upper"`
-	WidthPct           float64      `json:"widthPct"`
-	CapitalEfficiency  float64      `json:"capitalEfficiency"`
-	FeeAprInRange      float64      `json:"feeAprInRange"`
-	TimeInRange        float64      `json:"timeInRange"`
-	EstFees30d         float64      `json:"estFees30d"`
-	ILAtUpperEdge      float64      `json:"ilAtUpperEdge"`
-	DepositRatio       depositRatio `json:"depositRatio"`
-	Amount0            float64      `json:"amount0"`
-	Amount1            float64      `json:"amount1"`
-	ValueUsd           float64      `json:"valueUsd"`
-	DeltaToken0        float64      `json:"deltaToken0"`
-	DeltaUsd           float64      `json:"deltaUsd"`
-	SuggestedHedge     hedge        `json:"suggestedHedge"`
-	SingleSided        bool         `json:"singleSided"`
-	Warnings           []string     `json:"warnings"`
-	Calldata           any          `json:"calldata,omitempty"`
+	PoolID            string       `json:"poolId"`
+	Price             float64      `json:"price"`
+	Lower             float64      `json:"lower"`
+	Upper             float64      `json:"upper"`
+	WidthPct          float64      `json:"widthPct"`
+	CapitalEfficiency float64      `json:"capitalEfficiency"`
+	FeeAprInRange     float64      `json:"feeAprInRange"`
+	TimeInRange       float64      `json:"timeInRange"`
+	EstFees30d        float64      `json:"estFees30d"`
+	ILAtUpperEdge     float64      `json:"ilAtUpperEdge"`
+	DepositRatio      depositRatio `json:"depositRatio"`
+	Amount0           float64      `json:"amount0"`
+	Amount1           float64      `json:"amount1"`
+	ValueUsd          float64      `json:"valueUsd"`
+	DeltaToken0       float64      `json:"deltaToken0"`
+	DeltaUsd          float64      `json:"deltaUsd"`
+	SuggestedHedge    hedge        `json:"suggestedHedge"`
+	SingleSided       bool         `json:"singleSided"`
+	Warnings          []string     `json:"warnings"`
+	Calldata          any          `json:"calldata,omitempty"`
 }
 
 type perpQuoteReq struct {

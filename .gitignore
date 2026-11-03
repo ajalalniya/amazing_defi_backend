@@ -7,3 +7,7 @@ vendor/
 .env
 .idea/
 .vscode/
+data/*.csv
+data/*.tmp
+data/*.bak*
+.env.*

@@ -1,0 +1,2655 @@
+{
+  "bars": 24968,
+  "from": "2026-01-18T16:30:00Z",
+  "to": "2026-04-15T09:05:00Z",
+  "realizedVol": 0.7453966344316107,
+  "strategies": [
+    {
+      "name": "hold_eth",
+      "metrics": {
+        "netPnl": -3018.697880807813,
+        "totalReturn": -0.2012465253871875,
+        "apr": -0.8473198521528879,
+        "volatility": 0.4204444824070158,
+        "sharpe": -2.040026493484918,
+        "maxDrawdown": 0.3222610808912755,
+        "worst5WeeklyPnl": -1495.6553598939417,
+        "recenters": 0,
+        "hedgeTrades": 0,
+        "switches": 0,
+        "timeInRange": 0,
+        "realizedFeeApr": 0
+      },
+      "attribution": {
+        "poolFees": 0,
+        "lpDeltaPnl": 0,
+        "gammaLoss": 0,
+        "hedgePnl": 0,
+        "perpFees": 0,
+        "funding": 0,
+        "recenterCosts": 0,
+        "transitionCosts": 0,
+        "optionsPnl": 0,
+        "holdingPnl": -3018.697880807819,
+        "netPnl": -3018.697880807813
+      }
+    },
+    {
+      "name": "hold_5050",
+      "metrics": {
+        "netPnl": -1509.3489404039065,
+        "totalReturn": -0.10062326269359376,
+        "apr": -0.4236599260764439,
+        "volatility": 0.18317659967498762,
+        "sharpe": -2.346077552486183,
+        "maxDrawdown": 0.16168851412425875,
+        "worst5WeeklyPnl": -747.8276799469709,
+        "recenters": 0,
+        "hedgeTrades": 0,
+        "switches": 0,
+        "timeInRange": 0,
+        "realizedFeeApr": 0
+      },
+      "attribution": {
+        "poolFees": 0,
+        "lpDeltaPnl": 0,
+        "gammaLoss": 0,
+        "hedgePnl": 0,
+        "perpFees": 0,
+        "funding": 0,
+        "recenterCosts": 0,
+        "transitionCosts": 0,
+        "optionsPnl": 0,
+        "holdingPnl": -1509.3489404039094,
+        "netPnl": -1509.3489404039065
+      }
+    },
+    {
+      "name": "lp_only",
+      "metrics": {
+        "netPnl": -2808.2401174503993,
+        "totalReturn": -0.18721600783002662,
+        "apr": -0.78824635491218,
+        "volatility": 0.4222082367142549,
+        "sharpe": -1.8561024934263892,
+        "maxDrawdown": 0.30866848646251943,
+        "worst5WeeklyPnl": -1376.042941678811,
+        "recenters": 0,
+        "hedgeTrades": 0,
+        "switches": 0,
+        "timeInRange": 0.02443127202819609,
+        "realizedFeeApr": 0.024822072378264594
+      },
+      "attribution": {
+        "poolFees": 40.083105774617394,
+        "lpDeltaPnl": -2810.137946210282,
+        "gammaLoss": 38.185277014738126,
+        "hedgePnl": 0,
+        "perpFees": 0,
+        "funding": 0,
+        "recenterCosts": 0,
+        "transitionCosts": 0,
+        "optionsPnl": 0,
+        "holdingPnl": 0,
+        "netPnl": -2808.2401174503993
+      },
+      "breakEven": {
+        "sigma": 0.7453966344316107,
+        "k": 1.099999999999566,
+        "gammaDecayApr": 1.4923911043213611,
+        "costApr": 0,
+        "requiredFeeApr": 1.4923911043213611,
+        "realizedFeeApr": 0.024822072378264594,
+        "covered": false
+      }
+    },
+    {
+      "name": "static",
+      "metrics": {
+        "netPnl": -1338.1232403288013,
+        "totalReturn": -0.08920821602192008,
+        "apr": -0.3755984967446725,
+        "volatility": 0.1931935320939519,
+        "sharpe": -1.93627223359734,
+        "maxDrawdown": 0.15161412245741582,
+        "worst5WeeklyPnl": -646.4448618778865,
+        "recenters": 0,
+        "hedgeTrades": 1,
+        "switches": 0,
+        "timeInRange": 0.02443127202819609,
+        "realizedFeeApr": 0.024822072378264594
+      },
+      "attribution": {
+        "poolFees": 40.083105774617394,
+        "lpDeltaPnl": -2810.137946210282,
+        "gammaLoss": 38.185277014738126,
+        "hedgePnl": 1472.5559352741925,
+        "perpFees": 2.4390581525835326,
+        "funding": 0,
+        "recenterCosts": 0,
+        "transitionCosts": 0,
+        "optionsPnl": 0,
+        "holdingPnl": 0,
+        "netPnl": -1338.1232403288013
+      },
+      "breakEven": {
+        "sigma": 0.7453966344316107,
+        "k": 1.099999999999566,
+        "gammaDecayApr": 1.4923911043213611,
+        "costApr": 0.001026930720549449,
+        "requiredFeeApr": 1.4934180350419106,
+        "realizedFeeApr": 0.024822072378264594,
+        "covered": false
+      }
+    },
+    {
+      "name": "step",
+      "metrics": {
+        "netPnl": -38.7530457217581,
+        "totalReturn": -0.00258353638145054,
+        "apr": -0.010877612224860046,
+        "volatility": 0.00327972780307106,
+        "sharpe": -3.105295427113518,
+        "maxDrawdown": 0.002691850821003278,
+        "worst5WeeklyPnl": -16.61718186113867,
+        "recenters": 0,
+        "hedgeTrades": 7,
+        "switches": 0,
+        "timeInRange": 0.02443127202819609,
+        "realizedFeeApr": 0.024822072378264594
+      },
+      "attribution": {
+        "poolFees": 40.083105774617394,
+        "lpDeltaPnl": -2810.137946210282,
+        "gammaLoss": 38.185277014738126,
+        "hedgePnl": 2774.6264815290783,
+        "perpFees": 5.139409800378728,
+        "funding": 0,
+        "recenterCosts": 0,
+        "transitionCosts": 0,
+        "optionsPnl": 0,
+        "holdingPnl": 0,
+        "netPnl": -38.7530457217581
+      },
+      "breakEven": {
+        "sigma": 0.7453966344316107,
+        "k": 1.099999999999566,
+        "gammaDecayApr": 1.4923911043213611,
+        "costApr": 0.002163875348323034,
+        "requiredFeeApr": 1.4945549796696842,
+        "realizedFeeApr": 0.024822072378264594,
+        "covered": false
+      }
+    },
+    {
+      "name": "continuous",
+      "metrics": {
+        "netPnl": -15.153312984341028,
+        "totalReturn": -0.0010102208656227352,
+        "apr": -0.004253391172117672,
+        "volatility": 0.000748431183542038,
+        "sharpe": -4.747899626615063,
+        "maxDrawdown": 0.0009061240097738256,
+        "worst5WeeklyPnl": -5.946231942139274,
+        "recenters": 0,
+        "hedgeTrades": 625,
+        "switches": 0,
+        "timeInRange": 0.02443127202819609,
+        "realizedFeeApr": 0.024822072378264594
+      },
+      "attribution": {
+        "poolFees": 40.083105774617394,
+        "lpDeltaPnl": -2810.137946210282,
+        "gammaLoss": 38.185277014738126,
+        "hedgePnl": 2810.137946210282,
+        "perpFees": 17.051141744151906,
+        "funding": 0,
+        "recenterCosts": 0,
+        "transitionCosts": 0,
+        "optionsPnl": 0,
+        "holdingPnl": 0,
+        "netPnl": -15.153312984341028
+      },
+      "breakEven": {
+        "sigma": 0.7453966344316107,
+        "k": 1.099999999999566,
+        "gammaDecayApr": 1.4923911043213611,
+        "costApr": 0.007179140546101847,
+        "requiredFeeApr": 1.499570244867463,
+        "realizedFeeApr": 0.024822072378264594,
+        "covered": false
+      }
+    },
+    {
+      "name": "regime",
+      "metrics": {
+        "netPnl": -1850.3174710501826,
+        "totalReturn": -0.12335449807001217,
+        "apr": -0.5193665573404765,
+        "volatility": 0.07515533421124715,
+        "sharpe": -7.335107984908046,
+        "maxDrawdown": 0.12752150798700723,
+        "worst5WeeklyPnl": -489.1106008651296,
+        "recenters": 10,
+        "hedgeTrades": 424,
+        "switches": 92,
+        "timeInRange": 1,
+        "timeInRegime": {
+          "BEARISH": 0.08326658122396667,
+          "BULLISH": 0.033963473245754564,
+          "RANGE": 0.431352130727331,
+          "TEND_BEARISH": 0.2300544697212432,
+          "TEND_BULLISH": 0.22136334508170458
+        },
+        "realizedFeeApr": 1.3665535304216314
+      },
+      "attribution": {
+        "poolFees": 2057.1448445700357,
+        "lpDeltaPnl": -2041.614153487872,
+        "gammaLoss": 1963.4755267296005,
+        "hedgePnl": 942.4087248379019,
+        "perpFees": 140.38143348330544,
+        "funding": 0,
+        "recenterCosts": 35.73332254365288,
+        "transitionCosts": 133.8461179592056,
+        "optionsPnl": 0,
+        "holdingPnl": -534.8204862544823,
+        "netPnl": -1850.3174710501826
+      },
+      "breakEven": {
+        "sigma": 0.7453966344316107,
+        "k": 1.115764925373092,
+        "gammaDecayApr": 1.3031074377314107,
+        "costApr": 0.13050461438469,
+        "requiredFeeApr": 1.4336120521161007,
+        "realizedFeeApr": 1.3665535304216314,
+        "covered": false
+      },
+      "switches": [
+        {
+          "time": "2026-01-21T16:45:00Z",
+          "bar": 866,
+          "from": "RANGE",
+          "to": "BEARISH",
+          "z": -2.6227226762192055,
+          "hasZ": true,
+          "transitionCost": 3.627732469419078,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-22T04:45:00Z",
+          "bar": 1010,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": -1.0496695315701814,
+          "hasZ": true,
+          "transitionCost": 1.7195186403518614,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-23T16:50:00Z",
+          "bar": 1443,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.15927785388048296,
+          "hasZ": true,
+          "transitionCost": 2.2576633672756947
+        },
+        {
+          "time": "2026-01-24T20:00:00Z",
+          "bar": 1769,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.754594958816987,
+          "hasZ": true,
+          "transitionCost": 2.1235745293375317
+        },
+        {
+          "time": "2026-01-25T13:55:00Z",
+          "bar": 1984,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.2322597661043691,
+          "hasZ": true,
+          "transitionCost": 2.1145728149008143
+        },
+        {
+          "time": "2026-01-26T02:10:00Z",
+          "bar": 2131,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.7789084476657583,
+          "hasZ": true,
+          "transitionCost": 2.7582618885929024
+        },
+        {
+          "time": "2026-01-26T14:10:00Z",
+          "bar": 2275,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.22229095171440488,
+          "hasZ": true,
+          "transitionCost": 2.774439096528723
+        },
+        {
+          "time": "2026-01-28T16:30:00Z",
+          "bar": 2879,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.8110709132814319,
+          "hasZ": true,
+          "transitionCost": 0.8038700348989278,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-29T08:50:00Z",
+          "bar": 3075,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.2781404676154732,
+          "hasZ": true,
+          "transitionCost": 1.2322772772152273,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-29T20:50:00Z",
+          "bar": 3219,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.7559691344539012,
+          "hasZ": true,
+          "transitionCost": 2.7491724969776383
+        },
+        {
+          "time": "2026-01-30T20:40:00Z",
+          "bar": 3505,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": -1.7552663659252437,
+          "hasZ": true,
+          "transitionCost": 1.010697188685362,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-02T14:00:00Z",
+          "bar": 4289,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": -1.259046300132698,
+          "hasZ": true,
+          "transitionCost": 0.9038154154997748,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-03T20:45:00Z",
+          "bar": 4658,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.29058149769809205,
+          "hasZ": true,
+          "transitionCost": 0.16247759852005803
+        },
+        {
+          "time": "2026-02-04T16:45:00Z",
+          "bar": 4898,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.7238129874540782,
+          "hasZ": true,
+          "transitionCost": 0.03548466955656012
+        },
+        {
+          "time": "2026-02-05T15:40:00Z",
+          "bar": 5173,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": -1.7199538804369716,
+          "hasZ": true,
+          "transitionCost": 0.6475482834802789,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-06T05:45:00Z",
+          "bar": 5342,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": -1.221643271493042,
+          "hasZ": true,
+          "transitionCost": 0.5836760358548119,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-06T18:50:00Z",
+          "bar": 5499,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.2015224251822005,
+          "hasZ": true,
+          "transitionCost": 0.22967524161288339
+        },
+        {
+          "time": "2026-02-07T07:10:00Z",
+          "bar": 5647,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.7388831145073772,
+          "hasZ": true,
+          "transitionCost": 0.47727452739580867
+        },
+        {
+          "time": "2026-02-07T19:10:00Z",
+          "bar": 5791,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.2010203929480316,
+          "hasZ": true,
+          "transitionCost": 0.019807191787412866
+        },
+        {
+          "time": "2026-02-08T18:45:00Z",
+          "bar": 6074,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.7943958039065032,
+          "hasZ": true,
+          "transitionCost": 0.7018693514974654,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-09T16:30:00Z",
+          "bar": 6335,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.1803995975960718,
+          "hasZ": true,
+          "transitionCost": 2.1357077042966326,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-11T05:20:00Z",
+          "bar": 6777,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.73008248745994,
+          "hasZ": true,
+          "transitionCost": 0.013239627222183858
+        },
+        {
+          "time": "2026-02-12T10:40:00Z",
+          "bar": 7129,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.23040275271305516,
+          "hasZ": true,
+          "transitionCost": 1.7833985729277482
+        },
+        {
+          "time": "2026-02-12T22:40:00Z",
+          "bar": 7273,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -1.3132090231213345,
+          "hasZ": true,
+          "transitionCost": 0.16053917552103703
+        },
+        {
+          "time": "2026-02-13T14:50:00Z",
+          "bar": 7467,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0.013214581341394086,
+          "hasZ": true,
+          "transitionCost": 1.5452778671994265
+        },
+        {
+          "time": "2026-02-14T06:25:00Z",
+          "bar": 7654,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.7148489509716381,
+          "hasZ": true,
+          "transitionCost": 0.9708676595226194,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-15T13:40:00Z",
+          "bar": 8029,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.2027827563921237,
+          "hasZ": true,
+          "transitionCost": 1.933782139809035,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-16T15:45:00Z",
+          "bar": 8342,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.7076406680910986,
+          "hasZ": true,
+          "transitionCost": 0.1070536513369293
+        },
+        {
+          "time": "2026-02-18T13:20:00Z",
+          "bar": 8889,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.25435299662680066,
+          "hasZ": true,
+          "transitionCost": 1.2797597481184888
+        },
+        {
+          "time": "2026-02-23T01:20:00Z",
+          "bar": 10185,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.9722726160340015,
+          "hasZ": true,
+          "transitionCost": 0.017226533761915845
+        },
+        {
+          "time": "2026-02-23T13:35:00Z",
+          "bar": 10332,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.15557795017278309,
+          "hasZ": true,
+          "transitionCost": 1.8544333683395255
+        },
+        {
+          "time": "2026-02-24T01:35:00Z",
+          "bar": 10476,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -1.2977716855684511,
+          "hasZ": true,
+          "transitionCost": 0.08044151644255218
+        },
+        {
+          "time": "2026-02-24T14:10:00Z",
+          "bar": 10627,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": -1.7354321905831025,
+          "hasZ": true,
+          "transitionCost": 0.3893090814670435,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-25T02:20:00Z",
+          "bar": 10773,
+          "from": "BEARISH",
+          "to": "RANGE",
+          "z": -0.42766403088373883,
+          "hasZ": true,
+          "transitionCost": 1.828844479904102,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-25T17:00:00Z",
+          "bar": 10949,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.743457154285269,
+          "hasZ": true,
+          "transitionCost": 2.19388730244273,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-27T04:25:00Z",
+          "bar": 11374,
+          "from": "TEND_BULLISH",
+          "to": "BULLISH",
+          "z": 1.72409979577605,
+          "hasZ": true,
+          "transitionCost": 4.615299836661979,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-27T16:25:00Z",
+          "bar": 11518,
+          "from": "BULLISH",
+          "to": "TEND_BULLISH",
+          "z": 0.7093414205473061,
+          "hasZ": true,
+          "transitionCost": 5.091684835521091,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-28T04:25:00Z",
+          "bar": 11662,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.09974016968881697,
+          "hasZ": true,
+          "transitionCost": 1.5395123721114534,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-28T16:25:00Z",
+          "bar": 11806,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.9463872085254912,
+          "hasZ": true,
+          "transitionCost": 0.1982781823987007
+        },
+        {
+          "time": "2026-03-01T08:20:00Z",
+          "bar": 11997,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.27873887989235974,
+          "hasZ": true,
+          "transitionCost": 0.36794428729817547
+        },
+        {
+          "time": "2026-03-01T20:45:00Z",
+          "bar": 12146,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.7824952076210504,
+          "hasZ": true,
+          "transitionCost": 0.0279370532155979
+        },
+        {
+          "time": "2026-03-02T10:35:00Z",
+          "bar": 12312,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.28165691086450717,
+          "hasZ": true,
+          "transitionCost": 0.8129340101014761
+        },
+        {
+          "time": "2026-03-02T22:35:00Z",
+          "bar": 12456,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.9805785140756527,
+          "hasZ": true,
+          "transitionCost": 2.2947622806951258,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-03T19:45:00Z",
+          "bar": 12710,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.2674813895451964,
+          "hasZ": true,
+          "transitionCost": 2.130300271786184,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-04T16:00:00Z",
+          "bar": 12953,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.8938580236960959,
+          "hasZ": true,
+          "transitionCost": 2.9453598694087684,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-05T15:35:00Z",
+          "bar": 13236,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.2568082542704963,
+          "hasZ": true,
+          "transitionCost": 2.0252088546861904,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-06T08:55:00Z",
+          "bar": 13444,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.8007189684914366,
+          "hasZ": true,
+          "transitionCost": 0.5962409852367183,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-06T20:55:00Z",
+          "bar": 13588,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.033255482076313396,
+          "hasZ": true,
+          "transitionCost": 2.5152662645415793,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-07T09:50:00Z",
+          "bar": 13743,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.7115399502209794,
+          "hasZ": true,
+          "transitionCost": 0.9293020880328748
+        },
+        {
+          "time": "2026-03-08T04:55:00Z",
+          "bar": 13972,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": -1.7688660375753233,
+          "hasZ": true,
+          "transitionCost": 0.9260446337230777,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-08T19:35:00Z",
+          "bar": 14148,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": -1.1343474568482912,
+          "hasZ": true,
+          "transitionCost": 0.5497544998252564,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-09T13:55:00Z",
+          "bar": 14368,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.243633157908486,
+          "hasZ": true,
+          "transitionCost": 0.6441557022862517
+        },
+        {
+          "time": "2026-03-10T08:45:00Z",
+          "bar": 14594,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.7299935638709952,
+          "hasZ": true,
+          "transitionCost": 1.7232478566415925,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-12T05:40:00Z",
+          "bar": 15133,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.28535872490084774,
+          "hasZ": true,
+          "transitionCost": 1.616279845697471,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-12T23:30:00Z",
+          "bar": 15347,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.7182015653796509,
+          "hasZ": true,
+          "transitionCost": 1.3689583738673583,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-13T18:00:00Z",
+          "bar": 15569,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.23333145886767312,
+          "hasZ": true,
+          "transitionCost": 1.2211404361528695,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-15T05:00:00Z",
+          "bar": 15989,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.7310845804283199,
+          "hasZ": true,
+          "transitionCost": 0.8931340022260127,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-15T17:00:00Z",
+          "bar": 16133,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.22357654655237477,
+          "hasZ": true,
+          "transitionCost": 0.5229160561546022,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-16T05:00:00Z",
+          "bar": 16277,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 1.2908091102840795,
+          "hasZ": true,
+          "transitionCost": 2.758004716520068,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-16T17:50:00Z",
+          "bar": 16431,
+          "from": "TEND_BULLISH",
+          "to": "BULLISH",
+          "z": 1.9985504277300314,
+          "hasZ": true,
+          "transitionCost": 4.768508266929484,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-18T11:45:00Z",
+          "bar": 16934,
+          "from": "BULLISH",
+          "to": "TEND_BULLISH",
+          "z": 1.1669621820179796,
+          "hasZ": true,
+          "transitionCost": 5.1154972213063825,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-18T23:45:00Z",
+          "bar": 17078,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.1690321299668847,
+          "hasZ": true,
+          "transitionCost": 2.046287420921979,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-19T11:45:00Z",
+          "bar": 17222,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.7732246113983625,
+          "hasZ": true,
+          "transitionCost": 0.05318972671213442
+        },
+        {
+          "time": "2026-03-20T18:45:00Z",
+          "bar": 17594,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": -1.7130292256469764,
+          "hasZ": true,
+          "transitionCost": 1.700796022899767,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-21T07:30:00Z",
+          "bar": 17747,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": -1.2450961288774416,
+          "hasZ": true,
+          "transitionCost": 0.6385952775935133,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-21T20:15:00Z",
+          "bar": 17900,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.19424610698197078,
+          "hasZ": true,
+          "transitionCost": 0.9780169741178333
+        },
+        {
+          "time": "2026-03-22T08:30:00Z",
+          "bar": 18047,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.7430173918123445,
+          "hasZ": true,
+          "transitionCost": 0.09515121285286307
+        },
+        {
+          "time": "2026-03-23T11:20:00Z",
+          "bar": 18369,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0.11335822650762509,
+          "hasZ": true,
+          "transitionCost": 0.9143760182636995
+        },
+        {
+          "time": "2026-03-25T08:40:00Z",
+          "bar": 18913,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.7199121195017776,
+          "hasZ": true,
+          "transitionCost": 0.9879756341985425,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-26T10:15:00Z",
+          "bar": 19220,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.203210930814023,
+          "hasZ": true,
+          "transitionCost": 2.478638718699127,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-26T22:15:00Z",
+          "bar": 19364,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.8405346593419332,
+          "hasZ": true,
+          "transitionCost": 0.13979686975863342
+        },
+        {
+          "time": "2026-03-27T11:50:00Z",
+          "bar": 19527,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": -1.7197380311058392,
+          "hasZ": true,
+          "transitionCost": 1.766913192283289,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-29T06:05:00Z",
+          "bar": 20034,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": -1.2222947584013966,
+          "hasZ": true,
+          "transitionCost": 0.29229337668989036,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-30T03:35:00Z",
+          "bar": 20292,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.2821888886150674,
+          "hasZ": true,
+          "transitionCost": 0.8706969915688201
+        },
+        {
+          "time": "2026-03-30T15:35:00Z",
+          "bar": 20436,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.800292791094963,
+          "hasZ": true,
+          "transitionCost": 1.3388494666947262,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-31T09:40:00Z",
+          "bar": 20653,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.2993241026135896,
+          "hasZ": true,
+          "transitionCost": 1.5841187859351515,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-31T21:45:00Z",
+          "bar": 20798,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.7142656710779658,
+          "hasZ": true,
+          "transitionCost": 1.3673492240717318,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-02T03:55:00Z",
+          "bar": 21160,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.1528675197232177,
+          "hasZ": true,
+          "transitionCost": 1.633846889870534,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-04T05:35:00Z",
+          "bar": 21756,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": -0.790743123432294,
+          "hasZ": true,
+          "transitionCost": 0.052501006778349506
+        },
+        {
+          "time": "2026-04-05T02:55:00Z",
+          "bar": 22012,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": -0.22312333383453173,
+          "hasZ": true,
+          "transitionCost": 0.9647282360424327
+        },
+        {
+          "time": "2026-04-05T23:30:00Z",
+          "bar": 22259,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.8705782015141471,
+          "hasZ": true,
+          "transitionCost": 1.4114597439162697,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-07T14:10:00Z",
+          "bar": 22723,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.12060045497619477,
+          "hasZ": true,
+          "transitionCost": 1.7967371903512688,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-08T02:10:00Z",
+          "bar": 22867,
+          "from": "RANGE",
+          "to": "BULLISH",
+          "z": 1.7508948764704109,
+          "hasZ": true,
+          "transitionCost": 4.075000794938657,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-08T18:55:00Z",
+          "bar": 23068,
+          "from": "BULLISH",
+          "to": "TEND_BULLISH",
+          "z": 1.2470691005462584,
+          "hasZ": true,
+          "transitionCost": 4.743554606243374,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-09T09:30:00Z",
+          "bar": 23243,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.22522396384019105,
+          "hasZ": true,
+          "transitionCost": 1.3643605999454027,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-09T22:30:00Z",
+          "bar": 23399,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.7188457483660046,
+          "hasZ": true,
+          "transitionCost": 0.98801914924403,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-10T23:10:00Z",
+          "bar": 23695,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.09591058222282181,
+          "hasZ": true,
+          "transitionCost": 1.1265713753775224,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-11T18:50:00Z",
+          "bar": 23931,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.9753121055118994,
+          "hasZ": true,
+          "transitionCost": 1.2024722944577664,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-12T07:15:00Z",
+          "bar": 24080,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.29374131717575647,
+          "hasZ": true,
+          "transitionCost": 2.1580720478763524,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-13T22:35:00Z",
+          "bar": 24552,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.8707480395319505,
+          "hasZ": true,
+          "transitionCost": 1.8224422836102596,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-14T18:50:00Z",
+          "bar": 24795,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0.06944334498148097,
+          "hasZ": true,
+          "transitionCost": 1.399949792367634,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-15T06:50:00Z",
+          "bar": 24939,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0.9506610445058072,
+          "hasZ": true,
+          "transitionCost": 0.4285076841969002,
+          "note": "re-ranged"
+        }
+      ],
+      "events": [
+        {
+          "time": "2026-01-20T14:45:00Z",
+          "bar": 555,
+          "kind": "recenter",
+          "detail": "price 3038.38 reached the range edge; new range 2762.16..3342.21",
+          "cost": 4.660193978587254
+        },
+        {
+          "time": "2026-01-30T18:15:00Z",
+          "bar": 3477,
+          "kind": "floor",
+          "detail": "safety floor: price below range (beta \u003e= 1, step hedge)"
+        },
+        {
+          "time": "2026-01-30T18:15:00Z",
+          "bar": 3477,
+          "kind": "recenter",
+          "detail": "price 2663.39 reached the range edge; new range 2421.26..2929.73",
+          "cost": 4.377818195278506
+        },
+        {
+          "time": "2026-01-30T18:20:00Z",
+          "bar": 3478,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-01-31T18:40:00Z",
+          "bar": 3770,
+          "kind": "floor",
+          "detail": "safety floor: price below range (beta \u003e= 1, step hedge)"
+        },
+        {
+          "time": "2026-01-31T18:40:00Z",
+          "bar": 3770,
+          "kind": "recenter",
+          "detail": "price 2272.36 reached the range edge; new range 1975.96..2613.21",
+          "cost": 3.8730388938098366
+        },
+        {
+          "time": "2026-01-31T18:45:00Z",
+          "bar": 3771,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-03T18:45:00Z",
+          "bar": 4635,
+          "kind": "recenter",
+          "detail": "price 2118.50 reached the range edge; new range 1925.91..2330.35",
+          "cost": 3.516853691819556
+        },
+        {
+          "time": "2026-02-03T21:00:00Z",
+          "bar": 4662,
+          "kind": "recenter",
+          "detail": "price 2323.20 reached the range edge; new range 2112.00..2555.52",
+          "cost": 3.625465653861608
+        },
+        {
+          "time": "2026-02-04T16:10:00Z",
+          "bar": 4892,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-04T16:15:00Z",
+          "bar": 4893,
+          "kind": "recenter",
+          "detail": "price 2120.91 reached the range edge; new range 1928.10..2333.01",
+          "cost": 3.3566976396274573
+        },
+        {
+          "time": "2026-02-04T17:05:00Z",
+          "bar": 4903,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-04T21:40:00Z",
+          "bar": 4958,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-05T15:25:00Z",
+          "bar": 5171,
+          "kind": "recenter",
+          "detail": "price 1930.71 reached the range edge; new range 1755.19..2123.78",
+          "cost": 3.2371283782445865
+        },
+        {
+          "time": "2026-02-05T16:40:00Z",
+          "bar": 5186,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-05T16:50:00Z",
+          "bar": 5188,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-05T18:20:00Z",
+          "bar": 5206,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-08T11:30:00Z",
+          "bar": 5988,
+          "kind": "recenter",
+          "detail": "price 2125.86 reached the range edge; new range 1932.60..2338.45",
+          "cost": 3.2641842193790973
+        },
+        {
+          "time": "2026-02-09T10:20:00Z",
+          "bar": 6262,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-09T14:20:00Z",
+          "bar": 6310,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-09T15:00:00Z",
+          "bar": 6318,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-09T15:35:00Z",
+          "bar": 6325,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-09T16:30:00Z",
+          "bar": 6336,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-09T16:35:00Z",
+          "bar": 6337,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-10T06:40:00Z",
+          "bar": 6506,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-12T11:20:00Z",
+          "bar": 7138,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-12T11:35:00Z",
+          "bar": 7141,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-14T15:00:00Z",
+          "bar": 7758,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-14T15:20:00Z",
+          "bar": 7762,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-14T15:25:00Z",
+          "bar": 7763,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-15T12:55:00Z",
+          "bar": 8021,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-15T14:40:00Z",
+          "bar": 8042,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-15T14:45:00Z",
+          "bar": 8043,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-15T15:05:00Z",
+          "bar": 8047,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-15T15:15:00Z",
+          "bar": 8049,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-15T15:55:00Z",
+          "bar": 8057,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-15T16:00:00Z",
+          "bar": 8058,
+          "kind": "floor",
+          "detail": "safety floor: drawdown limit"
+        },
+        {
+          "time": "2026-02-24T01:15:00Z",
+          "bar": 10473,
+          "kind": "recenter",
+          "detail": "price 1824.41 reached the range edge; new range 1658.56..2006.86",
+          "cost": 3.024665825130396
+        },
+        {
+          "time": "2026-04-07T23:25:00Z",
+          "bar": 22835,
+          "kind": "recenter",
+          "detail": "price 2268.78 reached the range edge; new range 2062.52..2495.65",
+          "cost": 2.7972760679145874
+        }
+      ]
+    },
+    {
+      "name": "regime_oracle",
+      "looksAhead": true,
+      "metrics": {
+        "netPnl": 838.6663710294051,
+        "totalReturn": 0.05591109140196034,
+        "apr": 0.23540569264124928,
+        "volatility": 0.10448890841812895,
+        "sharpe": 2.2464105429446866,
+        "maxDrawdown": 0.037323566731632715,
+        "worst5WeeklyPnl": -148.902691303978,
+        "recenters": 7,
+        "hedgeTrades": 199,
+        "switches": 114,
+        "timeInRange": 1,
+        "timeInRegime": {
+          "BEARISH": 0.08795257930150593,
+          "BULLISH": 0.04297500801025313,
+          "RANGE": 0.3805270746555591,
+          "TEND_BEARISH": 0.24835789810958026,
+          "TEND_BULLISH": 0.24018743992310157
+        },
+        "realizedFeeApr": 1.405895408808081
+      },
+      "attribution": {
+        "poolFees": 2245.2148262367687,
+        "lpDeltaPnl": -2037.0961633179074,
+        "gammaLoss": 2153.915204295326,
+        "hedgePnl": 2529.971246212292,
+        "perpFees": 38.84008350721238,
+        "funding": 0,
+        "recenterCosts": 25.920401749223554,
+        "transitionCosts": 165.0182598457385,
+        "optionsPnl": 0,
+        "holdingPnl": 484.2704112957567,
+        "netPnl": 838.6663710294051
+      },
+      "breakEven": {
+        "sigma": 0.7453966344316107,
+        "k": 1.117143753923399,
+        "gammaDecayApr": 1.2889736578434696,
+        "costApr": 0.0967450702332702,
+        "requiredFeeApr": 1.3857187280767398,
+        "realizedFeeApr": 1.405895408808081,
+        "covered": true
+      },
+      "switches": [
+        {
+          "time": "2026-01-18T16:45:00Z",
+          "bar": 2,
+          "from": "RANGE",
+          "to": "BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.9669532092709368,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-19T04:45:00Z",
+          "bar": 146,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.9971264874661832,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-20T16:00:00Z",
+          "bar": 569,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.039198645542283
+        },
+        {
+          "time": "2026-01-21T19:50:00Z",
+          "bar": 903,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.6748673914056785
+        },
+        {
+          "time": "2026-01-22T08:35:00Z",
+          "bar": 1056,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.3283900046067825
+        },
+        {
+          "time": "2026-01-22T20:35:00Z",
+          "bar": 1200,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.608216002533595
+        },
+        {
+          "time": "2026-01-23T08:35:00Z",
+          "bar": 1344,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.6026643041365367
+        },
+        {
+          "time": "2026-01-24T23:50:00Z",
+          "bar": 1815,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.8874224266970328,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-25T15:20:00Z",
+          "bar": 2001,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.8651735930617701,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-26T03:20:00Z",
+          "bar": 2145,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.7982546098009595,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-26T15:20:00Z",
+          "bar": 2289,
+          "from": "TEND_BULLISH",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 2.0872985014136582,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-27T17:10:00Z",
+          "bar": 2599,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.622094514354114,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-30T09:40:00Z",
+          "bar": 3373,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.9576615260029837,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-01-31T20:40:00Z",
+          "bar": 3793,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.9455763572687585
+        },
+        {
+          "time": "2026-02-01T09:15:00Z",
+          "bar": 3944,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 2.0040061026465072
+        },
+        {
+          "time": "2026-02-01T23:20:00Z",
+          "bar": 4113,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.325135551237681
+        },
+        {
+          "time": "2026-02-02T11:20:00Z",
+          "bar": 4257,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.9303441752847654
+        },
+        {
+          "time": "2026-02-02T23:20:00Z",
+          "bar": 4401,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 2.969331848360762,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-03T11:20:00Z",
+          "bar": 4545,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.082374403149472,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-04T15:10:00Z",
+          "bar": 4879,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 2.2244085100261057
+        },
+        {
+          "time": "2026-02-05T15:35:00Z",
+          "bar": 5172,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 2.6357262718251997,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-06T14:00:00Z",
+          "bar": 5441,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.8908256322624876,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-07T18:40:00Z",
+          "bar": 5785,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.21363441828710528
+        },
+        {
+          "time": "2026-02-09T09:30:00Z",
+          "bar": 6251,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.68723421172233
+        },
+        {
+          "time": "2026-02-09T21:30:00Z",
+          "bar": 6395,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.4863174299666584
+        },
+        {
+          "time": "2026-02-10T09:35:00Z",
+          "bar": 6540,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.9821550854622727
+        },
+        {
+          "time": "2026-02-11T04:40:00Z",
+          "bar": 6769,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 2.9994764302273307,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-12T13:05:00Z",
+          "bar": 7158,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.6026061190643717,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-13T15:40:00Z",
+          "bar": 7477,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.7479242110404167
+        },
+        {
+          "time": "2026-02-15T03:40:00Z",
+          "bar": 7909,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.2943778071083835
+        },
+        {
+          "time": "2026-02-16T13:10:00Z",
+          "bar": 8311,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.9527111084943534
+        },
+        {
+          "time": "2026-02-17T01:10:00Z",
+          "bar": 8455,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.0915602905329311
+        },
+        {
+          "time": "2026-02-18T08:00:00Z",
+          "bar": 8825,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.8728776133497629
+        },
+        {
+          "time": "2026-02-18T20:00:00Z",
+          "bar": 8969,
+          "from": "TEND_BEARISH",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.8096454114948886,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-19T08:00:00Z",
+          "bar": 9113,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.9106455110444927,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-20T01:15:00Z",
+          "bar": 9320,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.327786134189054
+        },
+        {
+          "time": "2026-02-20T13:15:00Z",
+          "bar": 9464,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.3219912888377867
+        },
+        {
+          "time": "2026-02-21T01:15:00Z",
+          "bar": 9608,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.2554990606218757
+        },
+        {
+          "time": "2026-02-21T13:15:00Z",
+          "bar": 9752,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.3283645930337178,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-22T01:15:00Z",
+          "bar": 9896,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.18338149432176382,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-22T13:15:00Z",
+          "bar": 10040,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.1430548640032279
+        },
+        {
+          "time": "2026-02-23T01:15:00Z",
+          "bar": 10184,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 2.1250261425449777,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-24T03:55:00Z",
+          "bar": 10504,
+          "from": "TEND_BULLISH",
+          "to": "BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.4087661508947074,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-24T15:55:00Z",
+          "bar": 10648,
+          "from": "BULLISH",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 4.009152318874109,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-25T03:55:00Z",
+          "bar": 10792,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.9107666999506272,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-25T15:55:00Z",
+          "bar": 10936,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.20833051469795597
+        },
+        {
+          "time": "2026-02-26T03:55:00Z",
+          "bar": 11080,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.1278186592094697
+        },
+        {
+          "time": "2026-02-26T20:10:00Z",
+          "bar": 11275,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.5904245699441073
+        },
+        {
+          "time": "2026-02-27T09:30:00Z",
+          "bar": 11435,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.5929442518906265
+        },
+        {
+          "time": "2026-02-27T21:30:00Z",
+          "bar": 11579,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.0839752021055817,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-02-28T14:00:00Z",
+          "bar": 11777,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.0804217548971993,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-01T09:40:00Z",
+          "bar": 12013,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.8831021290870826,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-02T15:25:00Z",
+          "bar": 12370,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.0072899262229407,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-03T06:55:00Z",
+          "bar": 12556,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.9384552956049111,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-03T18:55:00Z",
+          "bar": 12700,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.5894689768013757,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-04T09:10:00Z",
+          "bar": 12871,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.4588912838752684
+        },
+        {
+          "time": "2026-03-04T21:10:00Z",
+          "bar": 13015,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.6793454178974455,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-05T15:20:00Z",
+          "bar": 13233,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.1069235070757673,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-06T09:40:00Z",
+          "bar": 13453,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.0739890416799533
+        },
+        {
+          "time": "2026-03-07T02:45:00Z",
+          "bar": 13658,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 2.0475645734068477,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-07T22:00:00Z",
+          "bar": 13889,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.534323447173217,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-08T11:20:00Z",
+          "bar": 14049,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.6039041274715204,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-09T03:15:00Z",
+          "bar": 14240,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.9173968946106177,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-09T23:10:00Z",
+          "bar": 14479,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.4613497879976324,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-10T11:50:00Z",
+          "bar": 14631,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.1086996187702565,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-11T02:45:00Z",
+          "bar": 14810,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.1088057838139065,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-11T14:45:00Z",
+          "bar": 14954,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.9686785396694018,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-12T02:50:00Z",
+          "bar": 15099,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.1674109546715985,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-12T14:50:00Z",
+          "bar": 15243,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.6659329710869614,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-13T02:50:00Z",
+          "bar": 15387,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.3836614804972749,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-13T17:40:00Z",
+          "bar": 15565,
+          "from": "TEND_BULLISH",
+          "to": "BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.700944391038367,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-15T10:50:00Z",
+          "bar": 16059,
+          "from": "BULLISH",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.9288056353554204,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-15T22:50:00Z",
+          "bar": 16203,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.075028561511103,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-16T10:50:00Z",
+          "bar": 16347,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.4518733016464376
+        },
+        {
+          "time": "2026-03-16T22:50:00Z",
+          "bar": 16491,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.902092483241444,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-17T10:50:00Z",
+          "bar": 16635,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.7409902499493686,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-18T03:45:00Z",
+          "bar": 16838,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.5489110150617521,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-18T15:45:00Z",
+          "bar": 16982,
+          "from": "BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.4130849476069356,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-19T03:45:00Z",
+          "bar": 17126,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.839673481463977
+        },
+        {
+          "time": "2026-03-19T15:45:00Z",
+          "bar": 17270,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.2750604930933342
+        },
+        {
+          "time": "2026-03-20T03:45:00Z",
+          "bar": 17414,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.2740878884956226
+        },
+        {
+          "time": "2026-03-20T15:45:00Z",
+          "bar": 17558,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.2637619313733757
+        },
+        {
+          "time": "2026-03-22T00:15:00Z",
+          "bar": 17948,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.903060666441133,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-23T05:55:00Z",
+          "bar": 18304,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.5611210305963552,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-23T17:55:00Z",
+          "bar": 18448,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.43334703385733603
+        },
+        {
+          "time": "2026-03-24T11:05:00Z",
+          "bar": 18654,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 2.0735676006543926,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-25T15:25:00Z",
+          "bar": 18994,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.2039924939841873,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-26T03:50:00Z",
+          "bar": 19143,
+          "from": "TEND_BEARISH",
+          "to": "BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.3424876047346476,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-26T15:50:00Z",
+          "bar": 19287,
+          "from": "BEARISH",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.2260841943659764,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-27T03:50:00Z",
+          "bar": 19431,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.0210668058612478
+        },
+        {
+          "time": "2026-03-27T15:50:00Z",
+          "bar": 19575,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.6239138857412703,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-28T07:25:00Z",
+          "bar": 19762,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.5827057875272423,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-28T19:25:00Z",
+          "bar": 19906,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.6490710963013835,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-30T02:55:00Z",
+          "bar": 20284,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.5497902797557102,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-03-31T17:25:00Z",
+          "bar": 20746,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.45436370761891676
+        },
+        {
+          "time": "2026-04-02T02:20:00Z",
+          "bar": 21141,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.4883842371539261
+        },
+        {
+          "time": "2026-04-02T23:20:00Z",
+          "bar": 21393,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.901227889646347,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-03T14:30:00Z",
+          "bar": 21575,
+          "from": "TEND_BULLISH",
+          "to": "BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.6118003303946695,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-04T02:30:00Z",
+          "bar": 21719,
+          "from": "BULLISH",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.6830495393453218,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-04T14:30:00Z",
+          "bar": 21863,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.4680324987593485,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-05T02:30:00Z",
+          "bar": 22007,
+          "from": "RANGE",
+          "to": "BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.495795641954484,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-05T14:45:00Z",
+          "bar": 22154,
+          "from": "BULLISH",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.654444066201711,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-06T02:45:00Z",
+          "bar": 22298,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.1592885124935404,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-06T17:10:00Z",
+          "bar": 22471,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.5401590021066938,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-07T15:10:00Z",
+          "bar": 22735,
+          "from": "TEND_BULLISH",
+          "to": "BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.1060380370218605,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-08T03:10:00Z",
+          "bar": 22879,
+          "from": "BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 3.6239811967416644,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-08T18:35:00Z",
+          "bar": 23064,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.7387682381067778,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-09T06:35:00Z",
+          "bar": 23208,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.8060525288898988,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-10T22:30:00Z",
+          "bar": 23687,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.4502988502891843,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-11T18:50:00Z",
+          "bar": 23931,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.9982008574154513,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-12T06:50:00Z",
+          "bar": 24075,
+          "from": "RANGE",
+          "to": "TEND_BULLISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.6551425576642207,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-13T22:25:00Z",
+          "bar": 24550,
+          "from": "TEND_BULLISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.2488405494521913,
+          "note": "re-ranged"
+        },
+        {
+          "time": "2026-04-14T10:25:00Z",
+          "bar": 24694,
+          "from": "RANGE",
+          "to": "TEND_BEARISH",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 0.6867702633513162
+        },
+        {
+          "time": "2026-04-14T22:25:00Z",
+          "bar": 24838,
+          "from": "TEND_BEARISH",
+          "to": "RANGE",
+          "z": 0,
+          "hasZ": false,
+          "transitionCost": 1.1659853078925166
+        }
+      ],
+      "events": [
+        {
+          "time": "2026-01-20T22:30:00Z",
+          "bar": 648,
+          "kind": "recenter",
+          "detail": "price 2933.91 reached the range edge; new range 2667.19..3227.30",
+          "cost": 4.513827072240709
+        },
+        {
+          "time": "2026-01-31T16:50:00Z",
+          "bar": 3748,
+          "kind": "recenter",
+          "detail": "price 2483.19 reached the range edge; new range 2257.44..2731.51",
+          "cost": 4.086234208270932
+        },
+        {
+          "time": "2026-02-01T23:05:00Z",
+          "bar": 4111,
+          "kind": "floor",
+          "detail": "safety floor: price below range (beta \u003e= 1, step hedge)"
+        },
+        {
+          "time": "2026-02-01T23:05:00Z",
+          "bar": 4111,
+          "kind": "recenter",
+          "detail": "price 2232.51 reached the range edge; new range 2029.56..2455.76",
+          "cost": 3.8838297827189874
+        },
+        {
+          "time": "2026-02-01T23:10:00Z",
+          "bar": 4112,
+          "kind": "floor",
+          "detail": "safety floor released"
+        },
+        {
+          "time": "2026-02-04T18:20:00Z",
+          "bar": 4918,
+          "kind": "recenter",
+          "detail": "price 2080.35 reached the range edge; new range 1891.22..2288.38",
+          "cost": 3.4893013675173736
+        },
+        {
+          "time": "2026-02-08T11:30:00Z",
+          "bar": 5988,
+          "kind": "recenter",
+          "detail": "price 2125.86 reached the range edge; new range 1932.60..2338.45",
+          "cost": 3.3952353466171017
+        },
+        {
+          "time": "2026-02-25T21:30:00Z",
+          "bar": 11004,
+          "kind": "recenter",
+          "detail": "price 2091.67 reached the range edge; new range 1901.52..2300.84",
+          "cost": 3.3171907974967443
+        },
+        {
+          "time": "2026-03-04T19:10:00Z",
+          "bar": 12992,
+          "kind": "recenter",
+          "detail": "price 2182.66 reached the range edge; new range 1984.24..2400.93",
+          "cost": 3.2347831743617066
+        }
+      ]
+    },
+    {
+      "name": "step_options",
+      "metrics": {
+        "netPnl": 87.17631137371791,
+        "totalReturn": 0.005811754091581194,
+        "apr": 0.024469563428005568,
+        "volatility": 0.020460682232642118,
+        "sharpe": 1.2369974158141226,
+        "maxDrawdown": 0.005940907498584311,
+        "worst5WeeklyPnl": -10.626598809903953,
+        "recenters": 0,
+        "hedgeTrades": 7,
+        "switches": 0,
+        "timeInRange": 0.02443127202819609,
+        "realizedFeeApr": 0.024822072378264594
+      },
+      "attribution": {
+        "poolFees": 40.083105774617394,
+        "lpDeltaPnl": -2810.137946210282,
+        "gammaLoss": 38.185277014738126,
+        "hedgePnl": 2774.6264815290783,
+        "perpFees": 5.139409800378728,
+        "funding": 0,
+        "recenterCosts": 0,
+        "transitionCosts": 0,
+        "optionsPnl": 125.9293570954753,
+        "holdingPnl": 0,
+        "netPnl": 87.17631137371791
+      },
+      "breakEven": {
+        "sigma": 0.7453966344316107,
+        "k": 1.099999999999566,
+        "gammaDecayApr": 1.4923911043213611,
+        "costApr": 0.002163875348323034,
+        "requiredFeeApr": 1.4945549796696842,
+        "realizedFeeApr": 0.024822072378264594,
+        "covered": false
+      }
+    }
+  ]
+}

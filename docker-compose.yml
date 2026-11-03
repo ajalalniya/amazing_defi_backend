@@ -1,9 +1,44 @@
+# Mock (default):  docker compose up --build
+# Live on-chain:    docker compose --profile live up --build api-live
+# Both at once:     docker compose --profile live up --build
+#
+# Frontend: npm run dev        → mock API on :8080
+#           npm run dev:live   → live API on :8081
+
+x-api-env: &api-env
+  PORT: "8080"
+  CORS_ORIGINS: "http://localhost:5173,http://127.0.0.1:5173,http://localhost:5174,http://127.0.0.1:5174,http://localhost:4173,http://localhost:3000"
+  BASE_RPC_URL: ${BASE_RPC_URL:-https://mainnet.base.org}
+  ARBITRUM_RPC_URL: ${ARBITRUM_RPC_URL:-https://arb1.arbitrum.io/rpc}
+  ETHEREUM_RPC_URL: ${ETHEREUM_RPC_URL:-}
+  BSC_RPC_URL: ${BSC_RPC_URL:-https://bsc-dataseed.binance.org}
+  GRAPH_API_KEY: ${GRAPH_API_KEY:-}
+  BASE_SUBGRAPH_URL: ${BASE_SUBGRAPH_URL:-}
+  ARBITRUM_SUBGRAPH_URL: ${ARBITRUM_SUBGRAPH_URL:-}
+  DATA_DIR: /data
+
 services:
   api:
     build: .
+    container_name: amazing-api
+    restart: unless-stopped
     ports:
       - "8080:8080"
     environment:
+      <<: *api-env
       PROVIDER: mock
-      PORT: "8080"
-      CORS_ORIGINS: "http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173,http://localhost:3000"
+    volumes:
+      - ./data:/data
+
+  api-live:
+    profiles: ["live"]
+    build: .
+    container_name: amazing-api-live
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    environment:
+      <<: *api-env
+      PROVIDER: chain
+    volumes:
+      - ./data:/data

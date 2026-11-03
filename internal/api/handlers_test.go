@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -12,7 +13,9 @@ import (
 
 	"log/slog"
 	"os"
+	"path/filepath"
 
+	"amazing/internal/history"
 	"amazing/internal/portfolio"
 	"amazing/internal/simulate"
 )
@@ -53,6 +56,7 @@ func TestHandlers(t *testing.T) {
 		code   string
 	}{
 		{"healthz", "GET", "/healthz", nil, 200, ""},
+		{"status", "GET", "/api/v1/status", nil, 200, ""},
 		{"readyz", "GET", "/readyz", nil, 200, ""},
 		{"metrics", "GET", "/metrics", nil, 200, ""},
 		{"pools", "GET", "/api/v1/pools", nil, 200, ""},
@@ -79,6 +83,7 @@ func TestHandlers(t *testing.T) {
 		{"backtest ok", "POST", "/api/v1/backtest", map[string]any{"days": 30, "driftPct": 10, "volPct": 40, "seed": 1, "legs": []map[string]any{{"kind": "lp", "poolId": "v4-eth-usdc-005", "capital": 10000, "lower": 2800, "upper": 3600}}}, 200, ""},
 		{"backtest no legs", "POST", "/api/v1/backtest", map[string]any{"days": 30, "legs": []any{}}, 400, "invalid_legs"},
 		{"backtest bad days", "POST", "/api/v1/backtest", map[string]any{"days": 0, "legs": []map[string]any{{"kind": "long", "perpId": "ETH-USD", "capital": 1, "leverage": 2}}}, 400, "invalid_days"},
+		{"backtest window incomplete", "POST", "/api/v1/backtest", map[string]any{"from": "2024-01-01", "legs": []map[string]any{{"kind": "lp", "poolId": "v4-eth-usdc-005", "capital": 1000, "lower": 1, "upper": 2}}}, 400, "invalid_window"},
 		{"strategies", "GET", "/api/v1/automation/strategies", nil, 200, ""},
 		{"jobs", "GET", "/api/v1/automation/jobs?owner=0xabc", nil, 200, ""},
 		{"create job", "POST", "/api/v1/automation/jobs", map[string]any{"owner": "0xabc"}, 501, "not_implemented"},
@@ -102,6 +107,49 @@ func TestHandlers(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+func TestBacktestStreamNDJSON(t *testing.T) {
+	s := testServer(t)
+	h := s.Handler(nil)
+	body := map[string]any{
+		"days": 30, "driftPct": 10, "volPct": 40, "seed": 1,
+		"legs": []map[string]any{{"kind": "lp", "poolId": "v4-eth-usdc-005", "capital": 10000, "lower": 2800, "upper": 3600}},
+	}
+	raw, _ := json.Marshal(body)
+	r := httptest.NewRequest("POST", "/api/v1/backtest?stream=1", bytes.NewReader(raw))
+	r.Header.Set("Content-Type", "application/json")
+	r.Header.Set("Accept", "application/x-ndjson")
+	w := httptest.NewRecorder()
+	h.ServeHTTP(w, r)
+	if w.Code != 200 {
+		t.Fatalf("status %d body=%s", w.Code, w.Body.String())
+	}
+	if ct := w.Header().Get("Content-Type"); !strings.Contains(ct, "ndjson") {
+		t.Fatalf("content-type %q", ct)
+	}
+	var sawResult bool
+	for _, line := range strings.Split(strings.TrimSpace(w.Body.String()), "\n") {
+		if line == "" {
+			continue
+		}
+		var ev struct {
+			Type   string          `json:"type"`
+			Result json.RawMessage `json:"result"`
+		}
+		if err := json.Unmarshal([]byte(line), &ev); err != nil {
+			t.Fatalf("line %q: %v", line, err)
+		}
+		if ev.Type == "result" {
+			sawResult = true
+			if len(ev.Result) == 0 {
+				t.Fatal("empty result")
+			}
+		}
+	}
+	if !sawResult {
+		t.Fatalf("no result event in %s", w.Body.String())
 	}
 }
 
@@ -169,3 +217,77 @@ func TestQuoteMatchesConcentrationGolden(t *testing.T) {
 	}
 }
 
+func TestStatusReportsMock(t *testing.T) {
+	s := testServer(t)
+	h := s.Handler(nil)
+	w := doJSON(t, h, "GET", "/api/v1/status", nil)
+	if w.Code != 200 {
+		t.Fatal(w.Body.String())
+	}
+	var body struct {
+		Status   string `json:"status"`
+		Provider string `json:"provider"`
+	}
+	if err := json.Unmarshal(w.Body.Bytes(), &body); err != nil {
+		t.Fatal(err)
+	}
+	if body.Provider != "mock" || body.Status != "ok" {
+		t.Fatalf("got %+v", body)
+	}
+}
+
+func TestHistoryCoverage(t *testing.T) {
+	h := testServer(t).Handler(nil)
+	w := doJSON(t, h, "GET", "/api/v1/history/coverage", nil)
+	if w.Code != 200 {
+		t.Fatalf("status %d body=%s", w.Code, w.Body.String())
+	}
+	// No history store wired: the field must still be an array, never null,
+	// so the frontend can iterate it without a guard.
+	var got struct {
+		Coverage []history.Coverage `json:"coverage"`
+	}
+	if err := json.Unmarshal(w.Body.Bytes(), &got); err != nil {
+		t.Fatal(err)
+	}
+	if got.Coverage == nil {
+		t.Fatal("coverage is null, want []")
+	}
+	if !strings.Contains(w.Body.String(), `"coverage":[]`) {
+		t.Errorf("body = %s", w.Body.String())
+	}
+}
+
+func TestHistoryCoverageWithStore(t *testing.T) {
+	dir := t.TempDir()
+	const day = int64(86400)
+	body := "amount0,amount1,timestamp,liquidity,sqrtPriceX96,tick,price\n" +
+		fmt.Sprintf("0.001,-3.1,%d,1e18,4573075199760799433668080,-195208,3100.5\n", 20000*day) +
+		fmt.Sprintf("0.001,-3.1,%d,1e18,4573075199760799433668080,-195208,3100.5\n", 20002*day+day-1)
+	path := filepath.Join(dir, "swaps_"+history.BaseETHUSDC.FileKey()+".csv")
+	if err := os.WriteFile(path, []byte(body), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	h := testServer(t).WithHistory(history.New(dir, nil, nil)).Handler(nil)
+	w := doJSON(t, h, "GET", "/api/v1/history/coverage", nil)
+	if w.Code != 200 {
+		t.Fatalf("status %d body=%s", w.Code, w.Body.String())
+	}
+	var got struct {
+		Coverage []history.Coverage `json:"coverage"`
+	}
+	if err := json.Unmarshal(w.Body.Bytes(), &got); err != nil {
+		t.Fatal(err)
+	}
+	if len(got.Coverage) != 1 {
+		t.Fatalf("got %d entries, want 1: %s", len(got.Coverage), w.Body.String())
+	}
+	c := got.Coverage[0]
+	if c.Days != 3 || c.Pair != "ETH/USDC" || c.PoolID != "v3-eth-usdc-005" {
+		t.Errorf("coverage = %+v", c)
+	}
+	if c.FullFrom == "" || c.FullTo == "" {
+		t.Errorf("full span missing: %+v", c)
+	}
+}

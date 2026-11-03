@@ -55,6 +55,45 @@ func LiquidityFor(capital, p0, pa, pb float64) float64 {
 	return capital / unit
 }
 
+// DepositAmounts is Uniswap v3 mint math: token amounts and L that deploy
+// `value` (in token1 units) into [lower, upper] at `spot`.
+// Mirrors strategy_builder UniswapV3Pool.compute_deposit_amounts2.
+func DepositAmounts(spot, value, lower, upper float64) (amount0, amount1, L float64) {
+	const eps = 1e-18
+	if spot <= 0 || value <= 0 || lower <= 0 || upper <= lower {
+		return 0, 0, 0
+	}
+	sa := math.Sqrt(lower)
+	sb := math.Sqrt(upper)
+	s := math.Sqrt(spot)
+
+	if s <= sa+eps {
+		amount0 = value / spot
+		denom := 1/sa - 1/sb
+		if denom > eps {
+			L = amount0 / denom
+		}
+		return amount0, 0, L
+	}
+	if s >= sb-eps {
+		amount1 = value
+		if sb-sa > eps {
+			L = amount1 / (sb - sa)
+		}
+		return 0, amount1, L
+	}
+	denom0 := 1/s - 1/sb
+	denom1 := s - sa
+	denomTotal := denom0*spot + denom1
+	if denomTotal <= eps {
+		return 0, 0, 0
+	}
+	L = value / denomTotal
+	amount0 = L * denom0
+	amount1 = L * denom1
+	return amount0, amount1, L
+}
+
 // Concentration is capital efficiency vs a full-range position, clamped to [1, 4000]:
 //
 //	1 / (1 - (pa/pb)^0.25)

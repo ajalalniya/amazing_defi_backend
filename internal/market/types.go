@@ -22,6 +22,8 @@ type Pool struct {
 	Volume  float64 `json:"volume24h"`
 	APR     float64 `json:"apr"`
 	Sigma   float64 `json:"sigma"`
+	Network string  `json:"network"`
+	ChainID int     `json:"chainId,omitempty"`
 	Hook    string  `json:"hook,omitempty"`
 }
 

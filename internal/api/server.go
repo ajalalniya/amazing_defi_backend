@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log/slog"
 	"net/http"
 	"strconv"
@@ -13,10 +14,12 @@ import (
 
 	"amazing/internal/automation"
 	"amazing/internal/backtest"
+	"amazing/internal/history"
 	"amazing/internal/market"
 	"amazing/internal/policy"
 	"amazing/internal/portfolio"
 	"amazing/internal/signer"
+	simapi "amazing/internal/sim/api"
 )
 
 type Server struct {
@@ -25,6 +28,7 @@ type Server struct {
 	store    portfolio.Store
 	engine   *portfolio.Engine
 	bt       *backtest.Engine
+	hist     *history.Store
 	hub      *Hub
 	jobs     automation.Store
 	guard    *policy.Guard
@@ -36,10 +40,10 @@ type Server struct {
 }
 
 type metrics struct {
-	httpTotal      atomic.Int64
-	wsClients      atomic.Int64
-	backtests      atomic.Int64
-	policyRejects  atomic.Int64
+	httpTotal     atomic.Int64
+	wsClients     atomic.Int64
+	backtests     atomic.Int64
+	policyRejects atomic.Int64
 }
 
 func New(log *slog.Logger, provider market.Provider, store portfolio.Store, chain bool) *Server {
@@ -60,12 +64,21 @@ func New(log *slog.Logger, provider market.Provider, store portfolio.Store, chai
 	return s
 }
 
+func (s *Server) WithHistory(h *history.Store) *Server {
+	if h != nil {
+		s.hist = h
+		s.bt.SetFeed(h)
+	}
+	return s
+}
+
 func (s *Server) Handler(origins []string) http.Handler {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /healthz", s.healthz)
 	mux.HandleFunc("GET /readyz", s.readyz)
 	mux.HandleFunc("GET /metrics", s.metricsHandler)
+	mux.HandleFunc("GET /api/v1/status", s.status)
 
 	mux.HandleFunc("GET /api/v1/pools", s.listPools)
 	mux.HandleFunc("GET /api/v1/pools/{id}", s.getPool)
@@ -80,6 +93,9 @@ func (s *Server) Handler(origins []string) http.Handler {
 	mux.HandleFunc("POST /api/v1/positions", s.openPosition)
 	mux.HandleFunc("DELETE /api/v1/positions/{id}", s.closePosition)
 	mux.HandleFunc("POST /api/v1/backtest", s.runBacktest)
+	mux.HandleFunc("GET /api/v1/history/coverage", s.historyCoverage)
+	mux.HandleFunc("GET /api/v1/history/price", s.historyPrice)
+	s.simHandler().Register(mux, "/api/v1/sim")
 	mux.HandleFunc("GET /api/v1/timeframes", s.timeframes)
 	mux.HandleFunc("GET /api/v1/ws", s.ws)
 
@@ -101,8 +117,19 @@ func (s *Server) Handler(origins []string) http.Handler {
 
 func (s *Server) Hub() *Hub { return s.hub }
 
+func (s *Server) providerMode() string {
+	if s.chain {
+		return "chain"
+	}
+	return "mock"
+}
+
 func (s *Server) healthz(w http.ResponseWriter, r *http.Request) {
-	writeJSON(w, 200, map[string]string{"status": "ok"})
+	writeJSON(w, 200, map[string]string{"status": "ok", "provider": s.providerMode()})
+}
+
+func (s *Server) status(w http.ResponseWriter, r *http.Request) {
+	writeJSON(w, 200, map[string]string{"status": "ok", "provider": s.providerMode()})
 }
 
 func (s *Server) readyz(w http.ResponseWriter, r *http.Request) {
@@ -147,7 +174,7 @@ func (s *Server) listPools(w http.ResponseWriter, r *http.Request) {
 			continue
 		}
 		if q != "" {
-			blob := strings.ToLower(p.Token0 + "/" + p.Token1 + " " + p.Token0 + " " + p.Token1 + " " + p.ID)
+			blob := strings.ToLower(p.Token0 + "/" + p.Token1 + " " + p.Token0 + " " + p.Token1 + " " + p.ID + " " + p.Network)
 			if !strings.Contains(blob, q) {
 				continue
 			}
@@ -430,7 +457,12 @@ func (s *Server) runBacktest(w http.ResponseWriter, r *http.Request) {
 		writeError(w, 400, "invalid_json", err.Error())
 		return
 	}
-	if req.Days < 1 || req.Days > 1825 {
+	if req.From != "" || req.To != "" || strings.EqualFold(req.Source, "onchain") {
+		if req.From == "" || req.To == "" {
+			writeError(w, 400, "invalid_window", "from and to dates are both required")
+			return
+		}
+	} else if req.Days < 1 || req.Days > 1825 {
 		writeError(w, 400, "invalid_days", "days must be 1..1825")
 		return
 	}
@@ -438,7 +470,7 @@ func (s *Server) runBacktest(w http.ResponseWriter, r *http.Request) {
 		writeError(w, 400, "invalid_legs", "at least one leg required")
 		return
 	}
-	if len(req.Legs)*req.Days > 20_000 {
+	if req.From == "" && len(req.Legs)*req.Days > 20_000 {
 		writeError(w, 400, "too_expensive", "days*legs exceeds cap")
 		return
 	}
@@ -467,19 +499,106 @@ func (s *Server) runBacktest(w http.ResponseWriter, r *http.Request) {
 		s.providerErr(w, err)
 		return
 	}
-	ctx, cancel := context.WithTimeout(r.Context(), 8*time.Second)
+	deadline := 8 * time.Second
+	if req.From != "" || strings.EqualFold(req.Source, "onchain") {
+		deadline = 10 * time.Minute
+	}
+	ctx, cancel := context.WithTimeout(r.Context(), deadline)
 	defer cancel()
+	var sink *ndjsonSink
+	if backtestWantsStream(r) {
+		sink = &ndjsonSink{w: w}
+		ctx = history.WithProgress(ctx, sink.progress)
+	}
 	s.metrics.backtests.Add(1)
 	res, err := s.bt.Run(ctx, req, pools, perps)
 	if err != nil {
-		if errors.Is(err, context.DeadlineExceeded) {
-			writeError(w, 504, "timeout", "backtest exceeded deadline")
+		status, code, msg := classifyBacktestErr(err)
+		if sink != nil && sink.fail(code, msg) {
 			return
 		}
-		writeError(w, 500, "internal", err.Error())
+		writeError(w, status, code, msg)
+		return
+	}
+	if sink != nil {
+		sink.result(res)
 		return
 	}
 	writeJSON(w, 200, res)
+}
+
+// historyCoverage reports the swap data already on disk, so the UI can offer
+// dates that are actually backed by a CSV instead of defaulting to a window
+// that would trigger a long RPC download.
+func (s *Server) historyCoverage(w http.ResponseWriter, r *http.Request) {
+	cov := []history.Coverage{}
+	if s.hist != nil {
+		cov = s.hist.Coverage()
+	}
+	writeJSON(w, 200, map[string]any{"coverage": cov})
+}
+
+// simHandler serves the regime-switching LP simulator (internal/sim). With a
+// history store, POST /api/v1/sim/simulate can replay a pool's swaps.
+func (s *Server) simHandler() *simapi.Handler {
+	h := &simapi.Handler{}
+	if s.hist != nil {
+		h.Source = simapi.SwapBars(func(ctx context.Context, poolID string, fromTS, toTS int64) ([]history.Row, float64, error) {
+			w, err := s.hist.Ensure(ctx, poolID, fromTS, toTS)
+			if err != nil {
+				return nil, 0, err
+			}
+			return w.Swaps, w.Spec.LiquidityScale, nil
+		})
+	}
+	return h
+}
+
+// historyPrice is a pool's daily close on a date, from the swaps on disk: the
+// price an on-chain backtest starting that day opens its LP at, so the UI can
+// express a range as ± percent of it. Dates off the CSV are 404, never fetched.
+func (s *Server) historyPrice(w http.ResponseWriter, r *http.Request) {
+	poolID, date := r.URL.Query().Get("poolId"), r.URL.Query().Get("date")
+	day, err := history.ParseDay(date)
+	if err != nil || poolID == "" {
+		writeError(w, 400, "invalid_request", "poolId and date=YYYY-MM-DD are required")
+		return
+	}
+	if s.hist == nil {
+		writeError(w, 404, "not_found", "no swap history configured")
+		return
+	}
+	price, ok, err := s.hist.DailyCloseAt(poolID, day)
+	if err != nil {
+		writeError(w, 500, "internal", err.Error())
+		return
+	}
+	if !ok {
+		writeError(w, 404, "not_found", fmt.Sprintf("no swaps on disk for %s on %s", poolID, date))
+		return
+	}
+	writeJSON(w, 200, map[string]any{"poolId": poolID, "date": date, "price": price})
+}
+
+func classifyBacktestErr(err error) (status int, code, msg string) {
+	if errors.Is(err, context.DeadlineExceeded) {
+		return 504, "timeout", "backtest exceeded deadline"
+	}
+	msg = err.Error()
+	switch {
+	case strings.Contains(msg, "invalid from") || strings.Contains(msg, "invalid to") || strings.Contains(msg, "to must be after"):
+		return 400, "invalid_window", msg
+	case strings.Contains(msg, "no on-chain pool mapping"):
+		return 422, "unsupported_pool", msg
+	case strings.Contains(msg, "RPC_URL") || strings.Contains(msg, "swap feed"):
+		return 503, "history_unavailable", msg
+	case strings.Contains(msg, "rpc fetch"):
+		return 502, "rpc_error", msg
+	case strings.Contains(msg, "no swap data"):
+		return 422, "no_market_data", msg
+	default:
+		return 500, "internal", msg
+	}
 }
 
 func (s *Server) timeframes(w http.ResponseWriter, r *http.Request) {

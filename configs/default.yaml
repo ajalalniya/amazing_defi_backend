@@ -1,0 +1,101 @@
+# Regime-switching hedged Uniswap v3 LP simulator: default configuration.
+# Every value here is also the built-in default (config.Defaults); a config
+# file only needs the keys it changes. Durations accept Go notation plus days:
+# 5m, 12h, 3d. Fractions are fractions (0.0005 = 0.05%).
+
+capital: 10000        # USD into the LP (or the holding baselines)
+reserve_usd: 5000     # USD posted as perp collateral; returns are on capital + reserve
+bar_size: 5m
+max_beta: 1.5         # cap on any profile's beta (above 1 over-hedges)
+
+pool:
+  fee_tier: 0.0005    # 0.05% pool
+  fee_model: apr      # none | apr | volume
+  base_fee_apr: 0.08  # apr model: a full-range position's fee APR, scaled by 1/(1-1/sqrt(k))
+  active_liquidity: 0 # volume model: L_active when the bars carry no liquidity column
+
+perp:
+  fee_rate: 0.0005          # per side, of notional
+  impact_bps: 0
+  funding_apr: 0            # positive: longs pay shorts (the hedge receives)
+  maintenance_margin: 0.01
+  liquidation_fee: 0.005
+
+recenter:
+  enabled: true       # regime strategies re-centre when price leaves the range
+  baselines: false    # fixed baselines keep their first range (set and forget)
+  edge_buffer: 0.005  # also re-centre within 0.5% of an edge (not an edge a skewed range sits on)
+  slippage_bps: 5
+  gas_usd: 0.05       # per transaction: withdraw + swap + mint = 3
+
+# Fixed-rule baselines (lp_only, static, step, continuous, step_options).
+baseline:
+  k: 1.1              # range p/k .. p*k
+  skew: 0
+  beta: 1
+  step_pct: 0.025     # step baseline re-hedges every 2.5% move
+  step_abs: 0         # or every $X when set (the validation table uses 75)
+
+detector:
+  kind: zscore        # zscore | emaadx  (the oracle runs only as regime_oracle)
+  lookback: 3d
+  thresholds: {bull: 1.5, tend_bull: 0.5, tend_bear: -0.5, bear: -1.5}
+  ema_fast: 12h       # emaadx only
+  ema_slow: 3d
+  adx_period: 1d
+  adx_trend: 20
+  adx_strong: 35
+  initial_regime: RANGE
+
+switcher:
+  confirm_bars: 3
+  hysteresis: 0.2              # z units added to the active regime's band before leaving it
+  min_dwell: 12h
+  transition_rerange: immediate # immediate | deferred (wait for the next natural re-centre)
+  max_dd: 0.08                 # safety floor: drawdown from peak that forces beta 1 (or exit)
+  dd_action: beta_one          # beta_one | exit
+  margin_buffer: 0.05          # top up / cut the short when margin < maintenance + buffer
+  floor_step_pct: 0.015        # step the floor hedges with
+
+# One rule profile per regime. Give every field: a profile here replaces the
+# default for its regime as a whole.
+#   lp_mode:    active | skewed_up | exit_to_eth | exit_to_usdc
+#   hedge_mode: none | static | step | continuous
+profiles:
+  RANGE:        {lp_mode: active,      beta: 0.3, hedge_mode: static,     step_pct: 0,     k: 1.10, skew: 0}
+  TEND_BULLISH: {lp_mode: active,      beta: 0.5, hedge_mode: step,       step_pct: 0.04,  k: 1.15, skew: 0}
+  BULLISH:      {lp_mode: exit_to_eth, beta: 0.0, hedge_mode: none,       step_pct: 0,     k: 1.15, skew: 1}
+  TEND_BEARISH: {lp_mode: active,      beta: 1.0, hedge_mode: step,       step_pct: 0.025, k: 1.10, skew: 0}
+  BEARISH:      {lp_mode: active,      beta: 1.0, hedge_mode: step,       step_pct: 0.015, k: 1.15, skew: 0}
+
+# Optional true gamma hedge (used by the step_options strategy).
+options:
+  enabled: false        # step_options turns it on for itself
+  iv: 0.6               # used when bars carry no iv column
+  tenor: 7d
+  roll: 3d
+  gamma_fraction: 0.5   # offset half the LP's |gamma|
+  strangle_width: 0     # 0 = ATM straddle; 0.05 = strikes at +-5%
+  spread_bps: 50        # paid on every option buy and sale
+  trigger_prob: 0.35    # buy when P(price ends the tenor outside the range) >= this
+  range_only: true      # ... and only in the RANGE regime
+
+# Empty runs all: hold_eth, hold_5050, lp_only, static, step, continuous,
+# regime, regime_oracle, step_options.
+strategies: []
+
+monte_carlo:
+  paths: 5000
+  seed: 1
+  workers: 0            # 0 = runtime.NumCPU()
+  p0: 3000
+  horizon: 7d
+  sigma: 0.6            # plain GBM
+  mu_apr: 0             # 0 = martingale price
+  regime_switching: false
+  regimes:              # regime-switching GBM: drift, vol and mean dwell per regime
+    RANGE:        {mu_apr: 0.0,  sigma: 0.45, mean_dwell: 3d}
+    TEND_BULLISH: {mu_apr: 1.0,  sigma: 0.55, mean_dwell: 2d}
+    BULLISH:      {mu_apr: 3.0,  sigma: 0.70, mean_dwell: 1d}
+    TEND_BEARISH: {mu_apr: -1.0, sigma: 0.60, mean_dwell: 2d}
+    BEARISH:      {mu_apr: -3.0, sigma: 0.90, mean_dwell: 1d}

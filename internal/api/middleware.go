@@ -57,6 +57,8 @@ func (w *statusWriter) WriteHeader(c int) {
 	w.ResponseWriter.WriteHeader(c)
 }
 
+func (w *statusWriter) Unwrap() http.ResponseWriter { return w.ResponseWriter }
+
 func (w *statusWriter) Flush() {
 	if f, ok := w.ResponseWriter.(http.Flusher); ok {
 		f.Flush()
